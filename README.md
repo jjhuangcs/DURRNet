@@ -18,62 +18,38 @@ DeMPAA-IP generates even more visually imperceptible adversarial patches to be p
 
 ### Requisites
 
+- Python3
 - PyTorch>=1.0
-- Python>=3.7
-- NVIDIA GPU + CUDA CuDNN
+- OpenCV-Python, TensorboardX, Visdom
+- NVIDIA GPU+CUDA
 
 ### Dataset
 
-We follow the synthetic data generation model of CEILNet (https://openaccess.thecvf.com/content_iccv_2017/html/Fan_A_Generic_Deep_ICCV_2017_paper.html) and synthetic dataset (https://github.com/ceciliavision/perceptual-reflection-removal) contains 13700 pairs of indoor and outdoor images. The real datasets consist of Real89 (https://github.com/ceciliavision/perceptual-reflection-removal) which contains 89 aligned transmission and blended image pairs. All the datasets are publicly available.
-
-### Key parameters
-```--patch_size```: The total patch size. E.g. 0.01 ~= 1% of image.
-
-```--patch_number```: The number of patches.
-
-```--netClassifier```: The target classifier: resnet50/resnet34/resnet101/densenet121.
-
-```--save_path```: The path to save the result.
-
-```--data_path```: The data path.
-
-```--train_size```: Number of training images.
-
-```--test_size```: Number of test images.
-
-```--max_count```: The max number of iterations to find adversarial example.
-
-```--image_size```: The height / width of the input image to network.
+We follow the synthetic data generation model of CEILNet (https://github.com/fqnchina/CEILNet) and synthetic dataset (https://github.com/ceciliavision/perceptual-reflection-removal) contains 13700 pairs of indoor and outdoor images. The real datasets consist of Real89 (https://github.com/ceciliavision/perceptual-reflection-removal) which contains 89 aligned transmission and blended image pairs. All the datasets are publicly available.
 
 
-### Run DeMPAA
-We provide two versions of DeMPAA, i.e. DeMPAA and DeMPAA-IP, DeMPAA-IP is the more imperceptible version of DeMPAA.
-- To Run *DeMPAA*:
+### Run DURRNet
+- Training:
 
 ```
-python train_DeMPAA.py
+python train_sirs.py --inet durrnet --model durrnet_model_sirs --name DURRNet --hyper --if_align
 ```
 
-- To Run *DeMPAA-IP*:
+- Testing:
 
 ```
-python train_DeMPAA_IP.py
+python test_sirs.py --inet durrnet --model durrnet_model_sirs --name DURRNet --hyper --if_align --resume --icnn_path ./checkpoints/DURRNet/DURRNet_latest.pt
 ```
-
-### Result images
-The visualization results of different adversarial patch attack methods on AID.
-![Image text](./DeMPAA.png)
 
 ### Citation
 ```
-@article{huang2024DeMPAA,
-  title={DeMPAA: Deployable Multi-Mini-Patch Adversarial Attack for Remote Sensing Image Classification},
-  author={Huang, Jun-Jie and Wang, Ziyue and Liu, Tianrui and Luo, Wenhan and Chen, Zihan and Zhao, Wentao and Wang, Meng},
-  journal={IEEE Transactions on Geoscience and Remote Sensing},
+@INPROCEEDINGS{DURRNet2024ICASSP,
+  author={Huang, Jun-Jie and Liu, Tianrui and Xia, Jingyuan and Wang, Meng and Dragotti, Pier Luigi},
+  booktitle={ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={DURRNET: Deep Unfolded Single Image Reflection Removal Network with Joint Prior}, 
   year={2024},
-  volume={62},
-  pages={1-13},
-  publisher={IEEE}
-}
+  pages={5235-5239},
+  doi={10.1109/ICASSP48485.2024.10446674}}
+
 
 ```
