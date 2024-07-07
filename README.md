@@ -10,8 +10,7 @@ Jun-Jie Huang#(jjhuang@nudt.edu.cn), Tianrui Liu, Jingyuan Xia, Meng Wang, and P
     
 - We propose a model-based optimization approach and then obtain DURRNet by unfolding an iterative step into a Unfolded Separation Block (USB) based on proximal gradient descent. Key features of DURR-Net include the use of Invertible Neural Networks to impose the transform-based exclusion prior on the basis of natural image prior, as well as a coarse-to-fine architecture to fine-grain the reflection removal process.
   
-- From extensive experimental results, the proposed DeMPAA method achieves a significantly higher attacking success rate when compared to other methods, and an imperceptible version of the proposed method i.e.,
-DeMPAA-IP generates even more visually imperceptible adversarial patches to be practically feasible for attacking RSI scenes.
+- Extensive experiments on public datasets demonstrate that DURRNet achieves state-of-the-art results not only visually, quantitatively, but also effectively.
 
 ![Image text](./overview.png)
 
